@@ -1,0 +1,29 @@
+
+
+#mymap{
+	height: 300px;
+	padding: 10px;
+}
+.center-div{
+	margin: 0 auto;
+	width: 300px;
+}
+
+.button-pad{
+	width: 50px;
+    height: 80px;
+    position: absolute;
+    top:30%;
+    left:50%;
+
+}
+
+#centered-div{
+	width: 500px;
+    height: 800px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-top:-400px; /*half of the height*/
+    margin-left:-250px; /*half of the width*/
+}
