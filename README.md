@@ -6,7 +6,7 @@ Dark sky's API is used for weather data and Openaq is used to get air quality in
 
 # Requirements:
 
-~ npm
-~ express
-~ fetch for Node.js
-~ nedb
+* npm
+* express
+* fetch for Node.js
+* nedb
