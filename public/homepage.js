@@ -35,30 +35,41 @@ if ('geolocation' in navigator){
       const aq_api_url = `/aq/${lat},${log}`;
       const fetch_aq_response = await fetch(aq_api_url);
       air_quality = await fetch_aq_response.json();
-      console.log(air_quality);
-      for(result of air_quality.results){
-        for (measurement of result.measurements){
-          console.log(measurement.parameter);
+      const location = air_quality.results[0].location
+      console.log(air_quality.results[0].measurements);
 
-          //Make elements for each mesurement
-          const root = document.createElement('p');
-          const value = document.createElement('div');
-          const unit = document.createElement('div');
+      let build_string = '';
+      for (mesurement of air_quality.results[0].measurements){
 
-          value.textContent = measurement.value;
-          unit.textContent = measurement.unit;
-
-          root.append(value,unit);
-          document.body.append(root);
-        }
+          build_string += mesurement.value + ' ' + mesurement.unit + ' for ' + mesurement.parameter + '\n';
 
       }
+      console.log(build_string);
+      // for(result of air_quality.results){
+      //   for (measurement of result.measurements){
+      //     console.log(measurement.parameter);
+
+      //     //Make elements for each mesurement
+      //     const root = document.createElement('p');
+      //     const value = document.createElement('div');
+      //     const unit = document.createElement('div');
+
+      //     value.textContent = measurement.value;
+      //     unit.textContent = measurement.unit;
+
+      //     root.append(value,unit);
+      //     document.body.append(root);
+      //   }
+
+      // }
 
       // Filling in <p> elements
       document.getElementById('latitude').textContent = lat;
       document.getElementById('longitude').textContent = log;
       document.getElementById('summary').textContent = weather.currently.summary;
       document.getElementById('temp').textContent = weather.currently.apparentTemperature;
+      document.getElementById('location').textContent = location;
+      document.getElementById('air_quality').textContent = build_string;
   });
 
 } else{
